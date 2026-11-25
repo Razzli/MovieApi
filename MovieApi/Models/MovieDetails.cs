@@ -19,6 +19,7 @@
         public string Synopsis { get => _synopsis; set => _synopsis = value; }
         public string Langueage { get => _langueage; set => _langueage = value; }
         public int Budget { get => _budget; set => _budget = value; }
+        public int MovieID { get; set; }
         public Movie Movie { get; set; }
     }
 }

@@ -20,10 +20,9 @@
         public int Year { get => _year; set => _year = value; }
         public string Description { get => _description; set => _description = value; }
 
-        public int MovieDetailsID { get; set; }
         public MovieDetails MovieDetails { get; set; }
-        public ICollection<Review> Reviews = new List<Review>();
+        public ICollection<Review> Reviews { get; } = new List<Review>();
         public ICollection<Genre> Genres = new List<Genre>();
-        public ICollection<Actor> Actors = new List<Actor>();
+        public ICollection<Actor> Actors { get; } = new List<Actor>();
     }
 }
