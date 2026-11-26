@@ -75,6 +75,32 @@ public class ActorsController : ControllerBase
         return CreatedAtAction("GetActor", new { id = actor.Id }, actor);
     }
 
+    // POST: api/movies/3/Actor/2
+    [HttpPost("/api/movies/{movieID}/actors/{actorID}")]
+    public async Task<ActionResult> PostMovieActor(int? movieID, int? actorID)
+    {
+        if (!ActorExists(actorID))
+        {
+            return NotFound();
+        }
+
+        if (!_context.Movie.Any(e => e.Id == movieID))
+        {
+            return NotFound();
+        }
+        var movie = await _context.Movie.FindAsync(movieID);
+        var actor = await _context.Actor.FindAsync(actorID);
+        if (movie.Actors.Contains(actor)){
+            return BadRequest();
+        }
+
+        movie.Actors.Add(actor);
+        actor.Movies.Add(movie);
+        await _context.SaveChangesAsync();
+
+        return Accepted();
+    }
+
     // DELETE: api/Actor/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteActor(int? id)

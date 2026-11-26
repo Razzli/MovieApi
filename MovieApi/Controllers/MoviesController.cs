@@ -33,6 +33,20 @@ public class MoviesController : ControllerBase
         return movie;
     }
 
+    // GET: api/Movie/5/details
+    [HttpGet("{id}/details")]
+    public async Task<ActionResult<MovieDetails>> GetMovieDetails(int id)
+    {
+        var movie = await _context.Movie.FindAsync(id);
+
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        return movie.MovieDetails;
+    }
+
     // PUT: api/Movie/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
@@ -74,7 +88,7 @@ public class MoviesController : ControllerBase
 
         return CreatedAtAction("GetMovie", new { id = movie.Id }, movie);
     }
-
+    
     // DELETE: api/Movie/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteMovie(int? id)
