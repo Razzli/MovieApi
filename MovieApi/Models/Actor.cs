@@ -15,6 +15,6 @@
         public int Id { get => _id; set => _id = value; }
         public string Name { get => _name; set => _name = value; }
         public int BirthYear { get => _birthYear; set => _birthYear = value; }
-        public ICollection<Movie> Movies { get; } = new List<Movie>();
+        public ICollection<Movie> Movies { get; set; } = new List<Movie>();
     }
 }

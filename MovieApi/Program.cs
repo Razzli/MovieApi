@@ -24,7 +24,7 @@ namespace MovieApi
             {
                 app.MapOpenApi();
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

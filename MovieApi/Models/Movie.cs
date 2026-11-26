@@ -20,8 +20,8 @@
         public int Duration { get => _duration; set => _duration = value; }
 
         public MovieDetails MovieDetails { get; set; }
-        public ICollection<Review> Reviews { get; } = new List<Review>();
-        public ICollection<Genre> Genres = new List<Genre>();
-        public ICollection<Actor> Actors { get; } = new List<Actor>();
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+        public ICollection<Genre> Genres { get; set; } = new List<Genre>();
+        public ICollection<Actor> Actors { get; set; } = new List<Actor>();
     }
 }
