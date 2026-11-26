@@ -7,9 +7,8 @@
         private string _comment = string.Empty;
         private int _rating;
 
-        public Review(int id, string reviewerName, string comment, int rating)
+        public Review(string reviewerName, string comment, int rating)
         {
-            Id = id;
             ReviewerName = reviewerName;
             Comment = comment;
             Rating = rating;

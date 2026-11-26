@@ -7,9 +7,8 @@
         private string _langueage =string.Empty;
         private int _budget;
 
-        public MovieDetails(int id, string synopsis, string langueage, int budget)
+        public MovieDetails(string synopsis, string langueage, int budget)
         {
-            Id = id;
             Synopsis = synopsis;
             Langueage = langueage;
             Budget = budget;

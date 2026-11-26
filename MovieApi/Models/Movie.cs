@@ -5,20 +5,19 @@
         private int _id;
         private string _title = string.Empty;
         private int _year;
-        private string _description = string.Empty;
+        private int _duration;
 
-        public Movie(int id, string title, int year, string description)
+        public Movie(string title, int year, int duration)
         {
-            Id = id;
             Title = title;
             Year = year;
-            Description = description;
+            Duration = duration;
         }
 
         public int Id { get => _id; set => _id = value; }
         public string Title { get => _title; set => _title = value; }
         public int Year { get => _year; set => _year = value; }
-        public string Description { get => _description; set => _description = value; }
+        public int Duration { get => _duration; set => _duration = value; }
 
         public MovieDetails MovieDetails { get; set; }
         public ICollection<Review> Reviews { get; } = new List<Review>();

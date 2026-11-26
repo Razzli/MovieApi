@@ -6,9 +6,8 @@
         private string _name = string.Empty;
         private int _birthYear;
 
-        public Actor(int id, string name, int birthYear)
+        public Actor(string name, int birthYear)
         {
-            Id = id;
             Name = name;
             BirthYear = birthYear;
         }

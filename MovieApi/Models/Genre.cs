@@ -5,9 +5,8 @@
         private int _id;
         private string _name = string.Empty;
 
-        public Genre(int genreId, string name)
+        public Genre(string name)
         {
-            Id = genreId;
             Name = name;
         }
 
