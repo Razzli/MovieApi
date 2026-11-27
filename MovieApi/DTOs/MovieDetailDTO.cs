@@ -2,14 +2,14 @@
 {
     public class MovieDetailDTO
     {
-        int Id { get; set; }
-        string Title { get; set; }
-        int Year { get; set; }
-        int Duration { get; set; }
-        string Synopsis {  get; set; }
-        string Language {  get; set; }
-        int Budget {  get; set; }
-        List<ReviewDTO> Reviews { get; set; }
-        List<ActorDTO> Actors { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public int Year { get; set; }
+        public int Duration { get; set; }
+        public string Synopsis {  get; set; }
+        public string Language {  get; set; }
+        public int Budget {  get; set; }
+        public List<ReviewDTO> Reviews { get; set; }
+        public List<ActorDTO> Actors { get; set; }
     }
 }

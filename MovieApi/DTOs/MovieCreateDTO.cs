@@ -13,8 +13,8 @@ namespace MovieApi.DTOs
         [Required(ErrorMessage = "Synopsis är ett krav")]
         public string Synopsis {  get; set; }
         [Required(ErrorMessage = "Språk är ett krav")]
-        string Language { get; set; }
+        public string Language { get; set; }
         [Required(ErrorMessage = "Budget är ett krav"), Range(0, int.MaxValue, ErrorMessage = "Budget får inte vara negativ")]
-        int Budget { get; set; }
+        public int Budget { get; set; }
     }
 }

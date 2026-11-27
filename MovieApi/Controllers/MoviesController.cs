@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MovieApi.DTOs;
 using MovieApi.Models;
 
 [Route("api/[controller]")]
@@ -14,14 +15,22 @@ public class MoviesController : ControllerBase
 
     // GET: api/Movie
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Movie>>> GetMovie()
+    public async Task<ActionResult<IEnumerable<MovieDTO>>> GetMovies()
     {
-        return await _context.Movie.ToListAsync();
+        var movieDTOs = (await _context.Movie.ToListAsync()).Select(
+            Movie => new MovieDTO() 
+            { 
+                Id = Movie.Id,
+                Title = Movie.Title,
+                Year = Movie.Year,
+                Duration = Movie.Duration
+            }).ToList();
+        return movieDTOs;
     }
 
     // GET: api/Movie/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Movie>> GetMovie(int id)
+    public async Task<ActionResult<MovieDTO>> GetMovie(int id)
     {
         var movie = await _context.Movie.FindAsync(id);
 
@@ -29,8 +38,15 @@ public class MoviesController : ControllerBase
         {
             return NotFound();
         }
+        var movieDTO = new MovieDTO()
+                        {
+                            Id = movie.Id,
+                            Title = movie.Title,
+                            Year = movie.Year,
+                            Duration = movie.Duration
+                        };
 
-        return movie;
+        return movieDTO;
     }
 
     // GET: api/Movie/5/details
@@ -81,8 +97,9 @@ public class MoviesController : ControllerBase
     // POST: api/Movie
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-    public async Task<ActionResult<Movie>> PostMovie(Movie movie)
+    public async Task<ActionResult<MovieDTO>> PostMovie(MovieCreateDTO movieCreateDTO)
     {
+        var movie = new Movie("s", 1, 1);
         _context.Movie.Add(movie);
         await _context.SaveChangesAsync();
 

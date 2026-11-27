@@ -2,9 +2,9 @@
 {
     public class MovieDTO
     {
-        int Id { get; set;  }
-        string Title { get; set; }
-        int Year { get; set; }
-        int Duration { get; set; }
+        public int Id { get; set;  }
+        public string Title { get; set; }
+        public int Year { get; set; }
+        public int Duration { get; set; }
     }
 }
