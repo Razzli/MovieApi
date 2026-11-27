@@ -1,9 +1,8 @@
-﻿using MovieApi.Migrations;
-using MovieApi.Models;
+﻿using MovieApi.Models;
 
-namespace MovieApi.Extensions
+namespace MovieApi.Data.Seed
 {
-    public class SeedData
+    public class DBSeeder
     {
         public static void Initialize(MovieApiContext context) { 
 
