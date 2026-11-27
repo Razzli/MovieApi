@@ -12,5 +12,6 @@
 
         public int Id { get => _id; set => _id = value; }
         public string Name { get => _name; set => _name = value; }
+        public ICollection<Movie> Movies { get; set; } = new List<Movie>();
     }
 }

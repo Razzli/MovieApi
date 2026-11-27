@@ -95,7 +95,6 @@ public class ActorsController : ControllerBase
         }
 
         movie.Actors.Add(actor);
-        actor.Movies.Add(movie);
         await _context.SaveChangesAsync();
 
         return Accepted();

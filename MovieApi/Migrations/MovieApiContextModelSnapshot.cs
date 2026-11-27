@@ -35,6 +35,21 @@ namespace MovieApi.Migrations
                     b.ToTable("ActorMovie");
                 });
 
+            modelBuilder.Entity("GenreMovie", b =>
+                {
+                    b.Property<int>("GenresId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MoviesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("GenresId", "MoviesId");
+
+                    b.HasIndex("MoviesId");
+
+                    b.ToTable("GenreMovie");
+                });
+
             modelBuilder.Entity("MovieApi.Models.Actor", b =>
                 {
                     b.Property<int>("Id")
@@ -63,16 +78,11 @@ namespace MovieApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("MovieId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("Genre");
                 });
@@ -174,11 +184,19 @@ namespace MovieApi.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MovieApi.Models.Genre", b =>
+            modelBuilder.Entity("GenreMovie", b =>
                 {
+                    b.HasOne("MovieApi.Models.Genre", null)
+                        .WithMany()
+                        .HasForeignKey("GenresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MovieApi.Models.Movie", null)
-                        .WithMany("Genres")
-                        .HasForeignKey("MovieId");
+                        .WithMany()
+                        .HasForeignKey("MoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MovieApi.Models.MovieDetails", b =>
@@ -205,8 +223,6 @@ namespace MovieApi.Migrations
 
             modelBuilder.Entity("MovieApi.Models.Movie", b =>
                 {
-                    b.Navigation("Genres");
-
                     b.Navigation("MovieDetails")
                         .IsRequired();
 
